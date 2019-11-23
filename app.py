@@ -11,10 +11,7 @@ def main():
 
 @app.route('/process_data/', methods=['POST'])
 def script():
-    pass
-    # a = request.form['a']
-    # b = request.form['b']
-    # return str(float(a) + float(b))
+    return str(subprocess.call("sh ./process_data.sh", shell=True))
 
 
 if __name__ == "__main__":
