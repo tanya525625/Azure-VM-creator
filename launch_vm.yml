@@ -48,7 +48,7 @@
   - name: Create VM
     azure_rm_virtualmachine:
       resource_group: app_for_grid
-      name: app_for_gridVM
+      name: newVM
       vm_size: Standard_B1ls
       admin_username: panda
       admin_password: superior0@mail.ru

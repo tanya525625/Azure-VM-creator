@@ -9,9 +9,9 @@ def main():
     return render_template('index.html')
 
 
-@app.route('/process_data/', methods=['POST'])
+@app.route('/launch_yaml/', methods=['POST'])
 def script():
-    return str(subprocess.call("sh ./process_data.sh", shell=True))
+    return str(subprocess.call("sh ./launch_yaml.sh", shell=True))
 
 
 if __name__ == "__main__":
