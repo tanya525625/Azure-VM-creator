@@ -1,3 +1,24 @@
 body {
    background-color: #2C1A1D;
 }
+
+/* Green */
+.success {
+   margin-top: 17%;
+   margin-left: 40%;
+   width: 20%;
+   height: 5em;
+   background-color: #A67F8E;
+   border-radius: 5px;
+   font-size: 2em;
+ }
+ 
+ .success:hover {
+   background-color: #2C1A1D;
+   color: #C89FA3;
+   border-color: #C89FA3;
+ }
+
+
+
+

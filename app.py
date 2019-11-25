@@ -9,7 +9,7 @@ def main():
     return render_template('index.html')
 
 
-@app.route('/launch_yaml/', methods=['POST'])
+@app.route('/launch_vm/', methods=['POST'])
 def script():
     return str(subprocess.call("sh ./launch_yaml.sh", shell=True))
 
