@@ -4,6 +4,8 @@ import logging
 
 app = Flask(__name__)
 
+logging.basicConfig(filename="sample.log", level=logging.INFO, filemode="w")
+
 
 @app.route("/")
 def main():
