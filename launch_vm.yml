@@ -4,22 +4,22 @@
   tasks:
   - name: Create resource group
     azure_rm_resourcegroup:
-      name:  app_for_grid
+      name:  appForGrid
       location: northeurope
   - name: Create virtual network
     azure_rm_virtualnetwork:
-      resource_group: app_for_grid
+      resource_group: appForGrid
       name: myVnet
       address_prefixes: "10.0.0.0/16"
   - name: Add subnet
     azure_rm_subnet:
-      resource_group: app_for_grid
+      resource_group: appForGrid
       name: mySubnet
       address_prefix: "10.0.1.0/24"
       virtual_network: myVnet
   - name: Create public IP address
     azure_rm_publicipaddress:
-      resource_group: app_for_grid
+      resource_group: appForGrid
       allocation_method: Static
       name: myPublicIP
     register: output_ip_address
@@ -28,7 +28,7 @@
       msg: "The public IP is {{ output_ip_address.state.ip_address }}."
   - name: Create Network Security Group that allows SSH
     azure_rm_securitygroup:
-      resource_group: app_for_grid
+      resource_group: appForGrid
       name: myNetworkSecurityGroup
       rules:
         - name: SSH
@@ -39,7 +39,7 @@
           direction: Inbound
   - name: Create virtual network interface card
     azure_rm_networkinterface:
-      resource_group: app_for_grid
+      resource_group: appForGrid
       name: myNIC
       virtual_network: myVnet
       subnet: mySubnet
@@ -47,7 +47,7 @@
       security_group: myNetworkSecurityGroup
   - name: Create VM
     azure_rm_virtualmachine:
-      resource_group: app_for_grid
+      resource_group: appForGrid
       name: newVM
       vm_size: Standard_B1ls
       admin_username: panda
