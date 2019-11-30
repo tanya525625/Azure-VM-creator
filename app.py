@@ -4,15 +4,17 @@ import logging
 
 app = Flask(__name__)
 
+logging.basicConfig(filename="sample.log", level=logging.INFO)
+
+
 @app.route("/")
 def main():
     return render_template('index.html')
 
 
-@app.route('/launch_vm/', methods=['POST'])
+@app.route('/get_the_prediction/', methods=['POST'])
 def script():
     return str(subprocess.call("sh ./launch_yaml.sh", shell=True))
-
 
 if __name__ == "__main__":
     app.run()
