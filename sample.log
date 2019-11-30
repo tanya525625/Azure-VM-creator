@@ -1,0 +1,8 @@
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [30/Nov/2019 18:37:11] "[33mGET /launch_vm/ HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [30/Nov/2019 18:37:15] "[37mGET / HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Nov/2019 18:37:48] "[37mPOST /get_the_prediction/ HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Nov/2019 18:37:50] "[37mPOST /get_the_prediction/ HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Nov/2019 18:37:54] "[37mPOST /get_the_prediction/ HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Nov/2019 18:51:36] "[37mPOST /get_the_prediction/ HTTP/1.1[0m" 200 -
