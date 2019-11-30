@@ -14,7 +14,10 @@ def main():
 
 @app.route('/get_the_prediction/', methods=['POST'])
 def script():
+    name = request.form.get('name')
+    logging.debug(name)
     return str(subprocess.call("sh ./launch_yaml.sh", shell=True))
+
 
 if __name__ == "__main__":
     app.run()
