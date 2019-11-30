@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import subprocess
+import logging
 
 app = Flask(__name__)
 
@@ -11,7 +12,10 @@ def main():
 
 @app.route('/launch_vm/', methods=['POST'])
 def script():
-    return str(subprocess.call("sh ./launch_yaml.sh", shell=True))
+    try:
+        return str(subprocess.call("sh ./launch_yaml.sh", shell=True))
+    except:
+        logging.exception('')
 
 
 if __name__ == "__main__":
