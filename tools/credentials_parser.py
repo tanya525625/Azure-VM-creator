@@ -10,6 +10,7 @@ class CreadentialsParser:
                            f'tenant={tenant}'
 
     def make_credentials(self):
+        os.chmod(r"/root", 777)
         make_dir('/root/.azure')
         with open('/root/.azure/credentials', 'w') as out_file:
             out_file.write(self.credentials)

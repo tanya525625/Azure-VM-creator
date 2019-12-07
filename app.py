@@ -52,6 +52,7 @@ if __name__ == "__main__":
     secret = 'b4f8e8a6-bb62-4d47-bc38-b48d26a179df'
     tenant = '213f50d2-073b-4146-bbee-7a25fd629183'
 
+
     credentials = CreadentialsParser(subscription_id, client_id, secret, tenant)
     credentials.make_credentials()
 
