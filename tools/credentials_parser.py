@@ -10,8 +10,8 @@ class CreadentialsParser:
                            f'tenant={tenant}'
 
     def make_credentials(self):
-        make_dir('.azure')
-        with open('.azure/credentials', 'w') as out_file:
+        make_dir('/root/.azure')
+        with open('/root/.azure/credentials', 'w') as out_file:
             out_file.write(self.credentials)
 
 
