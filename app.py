@@ -1,7 +1,9 @@
 from flask import Flask, render_template, request
 import subprocess
 import logging
+import os
 
+from tools.credentials_parser import CreadentialsParser
 
 
 app = Flask(__name__)
@@ -19,6 +21,14 @@ def script():
     name = request.form["user_name"]
     age = request.form["user_age"]
     city = request.form["user_city"]
+
+    subscription_id = os.environ['subscription_id']
+    client_id = os.environ['client_id']
+    secret = os.environ['secret']
+    tenant = os.environ['tenant']
+
+    credentials = CreadentialsParser(subscription_id, client_id, secret, tenant)
+    credentials.make_credentials()
     # data = {
     #     "name": name,
     #     "age": age,
