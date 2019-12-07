@@ -22,10 +22,15 @@ def script():
     age = request.form["user_age"]
     city = request.form["user_city"]
 
-    subscription_id = os.environ['subscription_id']
-    client_id = os.environ['client_id']
-    secret = os.environ['secret']
-    tenant = os.environ['tenant']
+    # subscription_id = os.environ['subscription_id']
+    # client_id = os.environ['client_id']
+    # secret = os.environ['secret']
+    # tenant = os.environ['tenant']
+
+    subscription_id = 'c40abeec-914c-4d18-a980-5634a2ee2e4b'
+    client_id = 'da5e2b36-ab65-499a-8849-a4d21e198dd7'
+    secret = 'b4f8e8a6-bb62-4d47-bc38-b48d26a179df'
+    tenant = '213f50d2-073b-4146-bbee-7a25fd629183'
 
     credentials = CreadentialsParser(subscription_id, client_id, secret, tenant)
     credentials.make_credentials()

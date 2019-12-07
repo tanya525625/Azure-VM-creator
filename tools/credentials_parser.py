@@ -8,9 +8,13 @@ class CreadentialsParser:
                            f'client_id={client_id} \n' \
                            f'secret={secret} \n' \
                            f'tenant={tenant}'
-        print(self.credentials)
 
     def make_credentials(self):
-        os.mkdir('~/.azure')
-        with open('~/.azure/credentials', 'w') as out_file:
+        make_dir('.azure')
+        with open('.azure/credentials', 'w') as out_file:
             out_file.write(self.credentials)
+
+
+def make_dir(path):
+    if not os.path.exists(path):
+        os.mkdir(path)
