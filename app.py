@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import subprocess
 import logging
+import os
 
 
 app = Flask(__name__)
@@ -39,8 +40,7 @@ def script():
     # # cookies = {'enwiki_session': '17ab96bd8ffbe8ca58a78657a918558'}
     #
     # # r = requests.post(url, cookies=cookies)
-
-    return str(subprocess.call("sh ./launch_yaml.sh", shell=True))
+    return str(os.system("sh ./launch_yaml.sh"))
 
 
 if __name__ == "__main__":
