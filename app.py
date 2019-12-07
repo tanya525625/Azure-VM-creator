@@ -1,9 +1,6 @@
 from flask import Flask, render_template, request
 import subprocess
 import logging
-import os
-
-from tools.credentials_parser import CreadentialsParser
 
 
 app = Flask(__name__)
