@@ -14,14 +14,3 @@
 # response = requests.get(url)
 #
 # print(response.headers)
-import os
-
-
-def make_dir(path):
-    if not os.path.exists(path):
-        os.mkdir(path)
-
-os.chmod("file.txt", 0777)
-make_dir('.azure')
-with open('.azure/credentials', 'w') as out_file:
-    out_file.write(credentials)
