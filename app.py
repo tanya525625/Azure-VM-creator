@@ -45,8 +45,5 @@ def script():
 
 if __name__ == "__main__":
     app.run()
-    # subscription_id = os.environ['subscription_id']
-    # client_id = os.environ['client_id']
-    # secret = os.environ['secret']
-    # tenant = os.environ['tenant']
+
 

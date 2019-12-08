@@ -1,16 +1,23 @@
-# from http import cookies
-# import requests
-# import responses
-#
-# url = 'http://127.0.0.1:5000/'
-# cookies = dict(name='jerry', password='888')
-#
-# response = requests.get(url, headers={'set-cookie': 'mk=lkmj'})
-# response = requests.get(url, cookies=cookies)
-# print(response.text)
-# custom_header = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36'}
-#
-#
-# response = requests.get(url)
-#
-# print(response.headers)
+import eventlet
+import socketio
+
+sio = socketio.Server()
+app = socketio.WSGIApp(sio, static_files={
+    '/': {'content_type': 'text/html', 'filename': 'index.html'}
+})
+
+@sio.event
+def connect(sid, environ):
+    sio.emit('my message', {'foo': 'bar'})
+    print('connect ', sid)
+
+@sio.event
+def my_message(sid, data):
+    print('message ', data)
+
+@sio.event
+def disconnect(sid):
+    print('disconnect ', sid)
+
+if __name__ == '__main__':
+    eventlet.wsgi.server(eventlet.listen(('', 5000)), app)

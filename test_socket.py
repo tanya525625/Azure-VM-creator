@@ -1,7 +1,11 @@
 import socketio
 
-
 sio = socketio.Client()
+
+@sio.event
+def my_event(sid, data):
+    # handle the message
+    return "OK", 123
 
 @sio.event
 def connect():
@@ -17,3 +21,5 @@ def disconnect():
     print('disconnected from server')
 
 sio.connect('http://localhost:5000')
+sio.emit('my message', {'foo': 'bar'})
+
