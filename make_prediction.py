@@ -1,24 +1,16 @@
-import os
-import http.cookies
-import requests
-import responses
+# import json
+from tools.AzureQueue import QueueWorker
 
-# cookie = http.cookies.SimpleCookie(os.environ.get("HTTP_COOKIE"))
-# # name = cookie.get("name")
-# # if name is None:
-# #     print("Cookies!!!")
-# # else:
-# #     print("Content-type: text/html\n")
-# #     print("Cookies:")
-# #     print(name.value)
-#
-#
-url = 'http://127.0.0.1:5000'
-r = requests.get(url)
-# print(cookie)
-print(r.cookies)
-# session = requests.Session()
-# with responses.RequestsMock() as rsps:
-#     r = session.get('http://127.0.0.1:5000')
 
-print(r.text)
+if __name__ == "__main__":
+    client_queue_name = 'client_queue'
+    client_queue = QueueWorker(client_queue_name)
+    messages = client_queue.receive_message()
+    # my_dict = json.loads('{' + messages + '}')
+    # my_dict = ast.literal_eval(messages)
+    # print(my_dict['name'])
+
+    server_queue_name = 'server_queue'
+    server_queue = QueueWorker(server_queue_name)
+    server_queue.create_queue()
+    prediction = server_queue.send_message('answer')

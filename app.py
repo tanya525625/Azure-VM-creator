@@ -1,7 +1,9 @@
 from flask import Flask, render_template, request
-import subprocess
+
 import logging
 import os
+
+from tools.AzureQueue import QueueWorker
 
 
 app = Flask(__name__)
@@ -20,27 +22,25 @@ def script():
     age = request.form["user_age"]
     city = request.form["user_city"]
 
-    # data = {
-    #     "name": name,
-    #     "age": age,
-    #     "city": city
-    # }
-    # C = cookies.SimpleCookie()
-    # C["fig"] = "newton"
-    # C["sugar"] = "wafer"
+    user_data = {
+        'name': name,
+        'age': age,
+        'city': city
+    }
+
+    # sending user's data to the queue
+    client_queue_name = 'client_queue'
+    client_queue = QueueWorker(client_queue_name)
+    client_queue.create_queue()
+    client_queue.send_message(str(user_data))
     #
-    # # C = cookies.SimpleCookie()
-    # # C["name"] = "newton"
-    # #
-    # #
-    # url = 'http://127.0.0.1:5000'
-    # # r = requests.get(url, headers=)
-    # #
-    # # session = requests.Session()
-    # # cookies = {'enwiki_session': '17ab96bd8ffbe8ca58a78657a918558'}
-    #
-    # # r = requests.post(url, cookies=cookies)
-    return str(os.system("sh ./launch_yaml.sh"))
+    # create virtual machine
+    os.system("sh ./launch_yaml.sh")
+
+    server_queue_name = 'server_queue'
+    server_queue = QueueWorker(server_queue_name)
+    result = server_queue.receive_message()
+    return render_template('prediction.html', res=result)
 
 
 if __name__ == "__main__":
