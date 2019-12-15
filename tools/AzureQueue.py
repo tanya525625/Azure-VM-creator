@@ -1,4 +1,4 @@
-
+import json
 from azure.servicebus import Message, ServiceBusService
 
 
@@ -24,5 +24,5 @@ class QueueWorker:
 
     def receive_message(self):
         # Receive the message from the queue
-        msg = self.sbs.receive_queue_message(self.queue_name)
-        return msg.body.decode("utf-8")
+        msg = self.sbs.receive_queue_message(self.queue_name, peek_lock=False)
+        return msg.body.decode("utf-8").replace("'", '"')

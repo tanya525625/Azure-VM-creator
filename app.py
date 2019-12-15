@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 
 import logging
+import json
 import os
 
 from tools.AzureQueue import QueueWorker
@@ -23,16 +24,17 @@ def script():
     city = request.form["user_city"]
 
     user_data = {
-        'name': name,
-        'age': age,
-        'city': city
+        "name": name,
+        "age": age,
+        "city": city
     }
 
     # sending user's data to the queue
     client_queue_name = 'client_queue'
     client_queue = QueueWorker(client_queue_name)
     client_queue.create_queue()
-    client_queue.send_message(str(user_data))
+
+    client_queue.send_message(json.dumps(user_data))
     #
     # create virtual machine
     os.system("sh ./launch_yaml.sh")
