@@ -6,7 +6,7 @@ if [ ! -f "$FILE" ]; then
     if [ ! -d "$DIR"]; then
       mkdir $DIR
     fi
-    sudo echo "VM ansible_host=$VM_IP ansible_ssh_user=$admin_username ansible_ssh_pass=$admin_password" > /etc/ansible/hosts
+    echo "VM ansible_host=$VM_IP ansible_ssh_user=$admin_username ansible_ssh_pass=$admin_password" > /etc/ansible/hosts
 fi
 export ANSIBLE_HOST_KEY_CHECKING=False
 ansible-playbook start_environment_preparation_for_VM.yml
