@@ -19,6 +19,7 @@ def main():
 
 @app.route('/get_the_prediction/', methods=['POST'])
 def script():
+
     name = request.form["user_name"]
     age = request.form["user_age"]
     city = request.form["user_city"]
@@ -33,11 +34,12 @@ def script():
     client_queue_name = 'client_queue'
     client_queue = QueueWorker(client_queue_name)
     client_queue.create_queue()
-
     client_queue.send_message(json.dumps(user_data))
-    #
+
     # create virtual machine
     os.system("sh ./launch_yaml.sh")
+
+    os.system("sh ./launch_prediction.sh")
 
     server_queue_name = 'server_queue'
     server_queue = QueueWorker(server_queue_name)
@@ -47,6 +49,7 @@ def script():
 
 
 if __name__ == "__main__":
+    os.system("sh ./mkdir.sh")
     app.run()
 
 
