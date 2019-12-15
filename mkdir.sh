@@ -2,7 +2,7 @@ DIR=~/.azure
 FILE=~/.azure/credentials
 
 if [ ! -f "$FILE" ]; then
-  if [ ! "$DIR" ]; then
+  if [ ! -d "$DIR" ]; then
     mkdir ~/.azure
   fi
   # make dir if it doesn't exist
