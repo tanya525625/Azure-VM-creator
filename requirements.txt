@@ -7,6 +7,6 @@ MarkupSafe==1.1.1
 ptvsd==4.3.2
 subprocess32==3.5.4
 pika==0.9.5
-requests==2.22.0
 azure
 azure-servicebus==0.21.1
+requests==2.22.0
