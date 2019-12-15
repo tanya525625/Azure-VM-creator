@@ -40,6 +40,7 @@ def script():
     server_queue_name = 'server_queue'
     server_queue = QueueWorker(server_queue_name)
     result = server_queue.receive_message()
+    print(result)
     return render_template('prediction.html', res=result)
 
 
