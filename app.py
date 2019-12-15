@@ -19,19 +19,20 @@ def main():
 
 @app.route('/get_the_prediction/', methods=['POST'])
 def script():
-
     name = request.form["user_name"]
     age = request.form["user_age"]
     city = request.form["user_city"]
+    zodiac_sign = request.form["zodiac_sign"]
 
     user_data = {
         "name": name,
         "age": age,
-        "city": city
+        "city": city,
+        "zodiac_sign": zodiac_sign
     }
 
-    # create virtual machine
-    os.system("sh ./launch_yaml.sh")
+    # # create virtual machine
+    # os.system("sh ./launch_yaml.sh")
 
     # sending user's data to the queue
     client_queue_name = 'client_queue'

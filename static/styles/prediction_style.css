@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Patrick+Hand+SC&display=swap');
+
+body {
+    background-image: url(../images/bg2.jpg);
+    background-size: cover;
+}
+
+.prediction{
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 12%;
+    border-radius: 5px;
+    color: #fff;
+    font-family: 'Patrick Hand SC', cursive;
+    font-size: 5em;
+    padding: 3%;
+    position: absolute;
+    box-shadow: 0px 1px 5px #999;
+    background-color: #5d5086;
+    opacity: 0.4;
+    border-radius: 10px;
+    text-align: center;
+}
