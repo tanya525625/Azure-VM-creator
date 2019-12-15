@@ -1,2 +1,2 @@
-sh  mkdir.sh
+sh mkdir.sh
 ansible-playbook launch_vm.yml

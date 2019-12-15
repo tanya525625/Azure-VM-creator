@@ -30,14 +30,14 @@ def script():
         "city": city
     }
 
+    # create virtual machine
+    os.system("sh ./launch_yaml.sh")
+
     # sending user's data to the queue
     client_queue_name = 'client_queue'
     client_queue = QueueWorker(client_queue_name)
     client_queue.create_queue()
     client_queue.send_message(json.dumps(user_data))
-
-    # create virtual machine
-    os.system("sh ./launch_yaml.sh")
 
     os.system("sh ./launch_prediction.sh")
 
@@ -49,7 +49,6 @@ def script():
 
 
 if __name__ == "__main__":
-    os.system("sh ./mkdir.sh")
     app.run()
 
 
