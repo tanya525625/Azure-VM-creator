@@ -30,7 +30,7 @@ def script():
         "city": city,
         "zodiac_sign": zodiac_sign
     }
-
+    #
     # # create virtual machine
     # os.system("sh ./launch_yaml.sh")
 
@@ -40,7 +40,11 @@ def script():
     client_queue.create_queue()
     client_queue.send_message(json.dumps(user_data))
 
-    os.system("sh ./launch_prediction.sh")
+    os.system("mkdir /etc/ansible")
+    #nodeIP = '40.115.98.24'
+    #os.system("echo \" vm ansible_host=" + nodeIP + " ansible_ssh_user=$admin_username ansible_ssh_pass=$admin_password \">>/etc/ansible/hosts")
+    os.system("sh ./make_host_for_vm.sh")
+#    os.system("sh ./launch_prediction.sh")
 
     server_queue_name = 'server_queue'
     server_queue = QueueWorker(server_queue_name)
