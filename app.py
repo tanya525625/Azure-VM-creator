@@ -31,8 +31,8 @@ def script():
         "zodiac_sign": zodiac_sign
     }
     #
-    # create virtual machine
-    os.system("sh ./launch_yaml.sh")
+    # # create virtual machine
+    # os.system("sh ./launch_yaml.sh")
 
     # sending user's data to the queue
     client_queue_name = 'client_queue'
