@@ -5,4 +5,5 @@ pip3 install ansible[azure]
 curl -sL https://aka.ms/InstallAzureCLIDeb | bash
 pip3 install azure
 pip3 azure-servicebus==0.21.1
-apt-get install sshpass
+apt install sshpass
+
