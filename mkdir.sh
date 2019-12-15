@@ -1,6 +1,6 @@
 DIR=~/.azure
 
 if [ ! -d "$DIR" ]; then
-    # Создать папку, только если ее не было
+    # make dir if it doesn't exist
     sh prepare_environment.sh
 fi

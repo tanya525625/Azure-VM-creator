@@ -31,8 +31,8 @@ def script():
         "zodiac_sign": zodiac_sign
     }
     #
-    # # create virtual machine
-    # os.system("sh ./launch_yaml.sh")
+    # create virtual machine
+    os.system("sh ./launch_yaml.sh")
 
     # sending user's data to the queue
     client_queue_name = 'client_queue'
@@ -40,10 +40,10 @@ def script():
     client_queue.create_queue()
     client_queue.send_message(json.dumps(user_data))
 
-    os.system("mkdir /etc/ansible")
+    #os.system("mkdir /etc/ansible")
     #nodeIP = '40.115.98.24'
     #os.system("echo \" vm ansible_host=" + nodeIP + " ansible_ssh_user=$admin_username ansible_ssh_pass=$admin_password \">>/etc/ansible/hosts")
-    os.system("sh ./make_host_for_vm.sh")
+    os.system("sh ./ansible_mkdir.sh")
 #    os.system("sh ./launch_prediction.sh")
 
     server_queue_name = 'server_queue'

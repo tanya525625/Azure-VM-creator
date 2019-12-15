@@ -3,15 +3,15 @@
   - name: Start environment preparation for VM
     script: ./install_VM_packages.sh
   - name: Сopy AzureQueue.py
-      copy:
-        src: ./tools/AzureQueue.py
-        dest: ~/
+    copy:
+      src: ./tools/AzureQueue.py
+      dest: ~/tools/
   - name: Сopy make_prediction.py
-      copy:
-        src: ./make_prediction.py
-        dest: ~/
+    copy:
+      src: ./make_prediction.py
+      dest: ~/
   - name: Start making prediction
-      script: ~/make_prediction.py
-      args:
-        executable: python3
+    script: ./make_prediction.py
+    args:
+      executable: python3
 

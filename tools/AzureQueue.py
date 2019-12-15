@@ -1,4 +1,3 @@
-import json
 from azure.servicebus import Message, ServiceBusService
 
 
