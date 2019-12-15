@@ -3,7 +3,7 @@ FILE=/etc/ansible/hosts
 
 if [ ! -f "$FILE" ]; then
     # make dir if it doesn't exist
-    if [ ! -d "$DIR"]; then
+    if [ ! -d "$DIR" ]; then
       mkdir $DIR
     fi
     echo "VM ansible_host=$VM_IP ansible_ssh_user=$admin_username ansible_ssh_pass=$admin_password" > /etc/ansible/hosts
