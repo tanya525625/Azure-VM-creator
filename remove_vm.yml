@@ -1,0 +1,11 @@
+ 
+- name: Remove Azure VM
+  hosts: localhost
+  connection: local
+  tasks:
+  - name: Remove a VM
+    azure_rm_virtualmachine:
+      resource_group: appForGrid
+      name: newVM
+      remove_on_absent: all_autocreated
+      state: absent

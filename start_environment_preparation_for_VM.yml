@@ -2,10 +2,6 @@
   tasks:
   - name: Start environment preparation for VM
     script: ./install_VM_packages.sh
-  - name: Сopy AzureQueue.py
-    copy:
-      src: ./tools/AzureQueue.py
-      dest: ~/tools/
   - name: Сopy make_prediction.py
     copy:
       src: ./make_prediction.py

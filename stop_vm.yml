@@ -1,0 +1,10 @@
+- name: Stop Azure VM
+  hosts: localhost
+  connection: local
+
+  tasks:
+  - name: Stop the virtual machine
+    azure_rm_virtualmachine:
+      resource_group: appForGrid
+      name: newVM
+      allocated: no
