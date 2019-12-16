@@ -32,7 +32,8 @@ def script():
     }
     #
     # # create virtual machine
-    os.system("sh ./azure_mkdir.sh")
+    os.system("ansible-playbook launch_vm.yml")
+    # os.system("sh ./azure_mkdir.sh")
     os.system("pip3 install azure-servicebus==0.21.0")
 
     # sending user's data to the queue
