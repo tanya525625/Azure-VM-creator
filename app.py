@@ -32,7 +32,8 @@ def script():
     }
     #
     # # create virtual machine
-    os.system("sh ./launch_yaml.sh")
+    os.system("sh ./azure_mkdir.sh")
+    os.system("pip3 install azure-servicebus==0.21.0")
 
     # sending user's data to the queue
     client_queue_name = 'client_queue'
