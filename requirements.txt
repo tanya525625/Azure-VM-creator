@@ -9,4 +9,3 @@ subprocess32==3.5.4
 pika==0.9.5
 azure-servicebus==0.21.1
 requests==2.22.0
-azure
