@@ -1,7 +1,6 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, Response
 
 import logging
-from threading import Thread
 from time import sleep
 import json
 import os
@@ -14,6 +13,7 @@ app = Flask(__name__)
 logging.basicConfig(filename="sample.log", level=logging.INFO)
 
 is_end = False
+is_started = False
 res = ''
 
 @app.route("/")
@@ -22,8 +22,10 @@ def main():
 
 
 def launch_code_on_vm(data):
-    global is_end
+    global is_started
     global res
+    global is_end
+    is_started = True
     # create virtual machine
     os.system("ansible-playbook create_vm.yml")
 
@@ -38,11 +40,9 @@ def launch_code_on_vm(data):
     server_queue_name = 'server_queue'
     server_queue = QueueWorker(server_queue_name)
     res = server_queue.receive_message()
-
-    os.system("ansible-playbook remove_vm.yml")
     is_end = True
 
-    # return render_template('prediction.html', res=result)
+    os.system("ansible-playbook remove_vm.yml")
 
 
 @app.route('/get_the_prediction/', methods=['POST'])
@@ -58,11 +58,14 @@ def script():
         "city": city,
         "zodiac_sign": zodiac_sign
     }
-    waiting_thread = Thread(target=launch_code_on_vm(user_data), daemon=True)
-    waiting_thread.start()
-    while not is_end:
-        return render_template('loading.html')
-    return render_template('prediction.html', res=res)
+
+    if not is_started:
+        launch_code_on_vm(user_data)
+
+    if is_end == False:
+        return Response(status=200)
+    else:
+        return render_template('prediction.html', res=res)
 
 
 if __name__ == "__main__":
