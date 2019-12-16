@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, Response
 
-import logging
 from time import sleep
 import json
 import os
@@ -9,8 +8,6 @@ from tools.AzureQueue import QueueWorker
 
 
 app = Flask(__name__)
-
-logging.basicConfig(filename="sample.log", level=logging.INFO)
 
 is_end = False
 is_started = False
