@@ -6,7 +6,8 @@ if [ ! -f "$FILE" ]; then
     mkdir ~/.azure
   fi
   # make dir if it doesn't exist
-  sh prepare_environment.sh
+  touch ~/.azure/credentials
+  echo -n "[default]\nsubscription_id=$subscription_id\nclient_id=$client_id\nsecret=$secret\ntenant=$tenant">~/.azure/credentials
 fi
 
 pip3 install ansible[azure]
