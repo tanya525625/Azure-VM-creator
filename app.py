@@ -56,14 +56,8 @@ def script():
         "city": city,
         "zodiac_sign": zodiac_sign
     }
-
-    if not is_started:
-        launch_code_on_vm(user_data)
-
-    if is_end == False:
-        return Response(status=200)
-    else:
-        return render_template('prediction.html', res=res)
+    launch_code_on_vm(user_data)
+    return render_template('prediction.html', res=res)
 
 
 if __name__ == "__main__":
