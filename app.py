@@ -34,15 +34,13 @@ def launch_code_on_vm(data):
     client_queue = QueueWorker(client_queue_name)
     client_queue.create_queue()
     client_queue.send_message(json.dumps(data))
-    sleep(60)
+    # sleep(60)
     os.system("sh ./ansible_mkdir.sh")
 
     server_queue_name = 'server_queue'
     server_queue = QueueWorker(server_queue_name)
     res = server_queue.receive_message()
     is_end = True
-
-    os.system("ansible-playbook remove_vm.yml")
 
 
 @app.route('/get_the_prediction/', methods=['POST'])
