@@ -8,8 +8,7 @@ if [ ! -f "$FILE" ]; then
   # make dir if it doesn't exist
   touch ~/.azure/credentials
   echo -n "[default]\nsubscription_id=$subscription_id\nclient_id=$client_id\nsecret=$secret\ntenant=$tenant">~/.azure/credentials
+  pip3 install ansible[azure]
+  pip3 install azure-servicebus==0.21.1
 fi
 
-pip3 install ansible[azure]
-pip3 install azure-servicebus==0.21.1
-apt install sshpass
