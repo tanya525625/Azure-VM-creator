@@ -1,6 +1,5 @@
-from flask import Flask, render_template, request, Response
+from flask import Flask, render_template, request
 
-from time import sleep
 import json
 import os
 
@@ -9,9 +8,6 @@ from tools.AzureQueue import QueueWorker
 
 app = Flask(__name__)
 
-is_end = False
-is_started = False
-res = ''
 
 @app.route("/")
 def main():
@@ -19,25 +15,20 @@ def main():
 
 
 def launch_code_on_vm(data):
-    global is_started
-    global res
-    global is_end
-    is_started = True
     # create virtual machine
-    os.system("ansible-playbook create_vm.yml")
+    os.system("./configs/ansible-playbook create_vm.yml")
 
     # sending user's data to the queue
     client_queue_name = 'client_queue'
     client_queue = QueueWorker(client_queue_name)
     client_queue.create_queue()
     client_queue.send_message(json.dumps(data))
-    # sleep(60)
-    os.system("sh ./ansible_mkdir.sh")
+    os.system("sh ./scripts/ansible_mkdir.sh")
 
+    # receiving response from the server
     server_queue_name = 'server_queue'
     server_queue = QueueWorker(server_queue_name)
-    res = server_queue.receive_message()
-    is_end = True
+    return server_queue.receive_message()
 
 
 @app.route('/get_the_prediction/', methods=['POST'])
@@ -53,7 +44,7 @@ def script():
         "city": city,
         "zodiac_sign": zodiac_sign
     }
-    launch_code_on_vm(user_data)
+    res = launch_code_on_vm(user_data)
     return render_template('prediction.html', res=res)
 
 

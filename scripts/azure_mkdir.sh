@@ -15,4 +15,3 @@ pip3 install azure
 apt install sshpass
 pip3 install ansible[azure]
 pip3 install azure-servicebus==0.21.0
-# ansible-playbook create_vm.yml

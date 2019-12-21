@@ -12,4 +12,4 @@ fi
 
 export ANSIBLE_HOST_KEY_CHECKING=False
 rm ~/.ssh/known_hosts
-ansible-playbook start_environment_preparation_for_VM.yml
+ansible-playbook ./configs/start_environment_preparation_for_VM.yml
